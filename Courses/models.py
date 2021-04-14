@@ -47,6 +47,7 @@ class Student(models.Model):
     city = models.ForeignKey(Cities, on_delete=models.PROTECT)
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
     email = models.EmailField(max_length=255, unique=True)
+    phone = models.CharField(max_length=255, unique=True, blank=True)
 
     def __str__(self):
         return self.name
