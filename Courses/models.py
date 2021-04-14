@@ -6,6 +6,9 @@ from datetime import datetime
 class Cities(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Город'
         verbose_name_plural = 'Города'
@@ -16,6 +19,9 @@ class Teachers(models.Model):
     photo = models.ImageField(max_length=255, blank=True, null=True)
     email = models.EmailField(max_length=255, unique=True)
     phone = models.CharField(max_length=50, unique=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Учитель'
@@ -28,6 +34,9 @@ class Course(models.Model):
     seats = models.IntegerField(default=1)
     teacher = models.ManyToManyField(Teachers)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Курс'
         verbose_name_plural = 'Курсы'
@@ -38,6 +47,9 @@ class Student(models.Model):
     city = models.ForeignKey(Cities, on_delete=models.PROTECT)
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
     email = models.EmailField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Ученик'
