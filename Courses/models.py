@@ -6,6 +6,10 @@ from datetime import datetime
 class Cities(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
+    class Meta:
+        verbose_name = 'Город'
+        verbose_name_plural = 'Города'
+
 
 class Teachers(models.Model):
     name = models.CharField(max_length=150, unique=True)
